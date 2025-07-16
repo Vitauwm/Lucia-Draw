@@ -319,21 +319,15 @@
             background-color: var(--primary-bg);
         }
 
-        .contact-section .form-control {
+        .contact-section .contact-info {
+            padding: 30px; /* Adiciona padding para distânciar do container */
             border-radius: var(--border-radius);
-            border: 1px solid #ced4da;
-            padding: 10px 15px;
-            box-shadow: none;
-            transition: border-color 0.3s ease;
-        }
-
-        .contact-section .form-control:focus {
-            border-color: var(--accent-color);
-            box-shadow: 0 0 0 0.25rem rgba(0, 0, 0, 0.25); /* Sombra do foco preta */
+            background-color: var(--secondary-bg); /* Fundo branco para contraste */
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.03);
         }
 
         .contact-info p {
-            margin-bottom: 10px;
+            margin-bottom: 15px; /* Aumenta o espaçamento entre as linhas de contato */
             color: var(--text-dark);
             font-size: 1.1rem;
         }
@@ -821,35 +815,13 @@
             <h2 class="section-heading">Entre em Contato</h2>
             <div class="row justify-content-center">
                 <div class="col-lg-8">
-                    <p class="text-center mb-5">Tenho certeza que podemos criar algo incrível juntos. Preencha o formulário abaixo ou entre em contato diretamente.</p>
-                    <form id="contactForm">
-                        <div class="mb-3">
-                            <label for="name" class="form-label">Nome Completo</label>
-                            <input type="text" class="form-control rounded-corners" id="name" placeholder="Seu nome" required>
-                        </div>
-                        <div class="mb-3">
-                            <label for="email" class="form-label">Endereço de E-mail</label>
-                            <input type="email" class="form-control rounded-corners" id="email" placeholder="seu.email@exemplo.com" required>
-                        </div>
-                        <div class="mb-3">
-                            <label for="subject" class="form-label">Assunto</label>
-                            <input type="text" class="form-control rounded-corners" id="subject" placeholder="Assunto da mensagem" required>
-                        </div>
-                        <div class="mb-3">
-                            <label for="message" class="form-label">Sua Mensagem</label>
-                            <textarea class="form-control rounded-corners" id="message" rows="6" placeholder="Escreva sua mensagem aqui..." required></textarea>
-                        </div>
-                        <div class="d-grid gap-2">
-                            <button type="submit" class="btn btn-primary btn-lg rounded-corners" id="submitButton">Enviar Mensagem</button>
-                        </div>
-                    </form>
+                    <p class="text-center mb-5">Tenho certeza que podemos criar algo incrível juntos. Entre em contato diretamente pelos meios abaixo:</p>
                     <div class="contact-info text-center mt-5">
-                        <p><i class="fas fa-envelope" style="color: var(--accent-color);"></i> lucia.draw@email.com</p>
-                        <p><i class="fas fa-phone" style="color: var(--accent-color);"></i> (XX) XXXX-XXXX (Opcional)</p>
+                        <p><i class="fas fa-envelope" style="color: var(--accent-color);"></i> <a href="mailto:lucia.web.mga@gmail.com" class="text-decoration-none" style="color: var(--text-dark);">lucia.web.mga@gmail.com</a></p>
+                        <p><i class="fas fa-phone" style="color: var(--accent-color);"></i> <a href="tel:+557599962207" class="text-decoration-none" style="color: var(--text-dark);">+55 75 9996-2207</a></p>
                         <div class="social-icons mt-4">
-                            <a href="https://instagram.com/luciadraw" target="_blank" class="text-decoration-none"><i class="fab fa-instagram"></i></a>
-                            <a href="https://linkedin.com/in/luciadraw" target="_blank" class="text-decoration-none ms-3"><i class="fab fa-linkedin-in"></i></a>
-                            <a href="https://behance.net/luciadraw" target="_blank" class="text-decoration-none ms-3"><i class="fab fa-behance"></i></a>
+                            <a href="https://instagram.com/lucia.draw" target="_blank" class="text-decoration-none"><i class="fab fa-instagram"></i></a>
+                            <a href="https://www.linkedin.com/in/l%C3%BAcia-maria-837b3a297/" target="_blank" class="text-decoration-none ms-3"><i class="fab fa-linkedin-in"></i></a>
                         </div>
                     </div>
                 </div>
@@ -860,9 +832,8 @@
     <footer class="footer">
         <div class="container">
             <div class="social-icons">
-                <a href="https://instagram.com/luciadraw" target="_blank"><i class="fab fa-instagram"></i></a>
-                <a href="https://linkedin.com/in/luciadraw" target="_blank"><i class="fab fa-linkedin-in"></i></a>
-                <a href="https://behance.net/luciadraw" target="_blank"><i class="fab fa-behance"></i></a>
+                <a href="https://instagram.com/lucia.draw" target="_blank"><i class="fab fa-instagram"></i></a>
+                <a href="https://www.linkedin.com/in/l%C3%BAcia-maria-837b3a297/" target="_blank"><i class="fab fa-linkedin-in"></i></a>
             </div>
             <p>&copy; 2025 Lucia Draw. Todos os direitos reservados.</p>
         </div>
@@ -928,46 +899,6 @@
                     });
                 });
             });
-
-            // Adiciona funcionalidade para o formulário de contato (apenas loga no console)
-            const contactForm = document.getElementById('contactForm');
-            const submitButton = document.getElementById('submitButton');
-
-            if (contactForm && submitButton) {
-                contactForm.addEventListener('submit', function(e) {
-                    e.preventDefault(); // Impede o envio padrão do formulário
-
-                    // Desabilita o botão e muda o texto
-                    submitButton.disabled = true;
-                    submitButton.innerText = 'Enviando...';
-
-                    const userName = document.getElementById('name').value;
-                    const userEmail = document.getElementById('email').value;
-                    const subject = document.getElementById('subject').value;
-                    const message = document.getElementById('message').value;
-
-                    // Simula um envio (em um ambiente real, você faria uma requisição AJAX/fetch aqui)
-                    setTimeout(() => {
-                        console.log('Formulário enviado!');
-                        console.log('Nome:', userName);
-                        console.log('Email:', userEmail);
-                        console.log('Assunto:', subject);
-                        console.log('Mensagem:', message);
-
-                        // Reabilita o botão e restaura o texto
-                        submitButton.disabled = false;
-                        submitButton.innerText = 'Enviar Mensagem';
-
-                        // Exibe o modal de confirmação
-                        const myModal = new bootstrap.Modal(document.getElementById('confirmationModal'), {
-                            keyboard: false
-                        });
-                        document.getElementById('confirmationModalBody').innerText = `Obrigado, ${userName}! Sua mensagem foi enviada com sucesso. Em breve entraremos em contato.`;
-                        myModal.show();
-                        contactForm.reset(); // Limpa o formulário
-                    }, 2000); // Simula 2 segundos de atraso para o envio
-                });
-            }
         });
 
         // Adiciona classe 'active' ao link da navbar quando a seção correspondente está visível
@@ -996,22 +927,6 @@
         });
 
     </script>
-
-    <div class="modal fade" id="confirmationModal" tabindex="-1" aria-labelledby="confirmationModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content rounded-corners">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="confirmationModalLabel">Confirmação</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body" id="confirmationModalBody">
-                    </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary rounded-corners" data-bs-dismiss="modal">Fechar</button>
-                </div>
-            </div>
-        </div>
-    </div>
 
 </body>
 </html>
