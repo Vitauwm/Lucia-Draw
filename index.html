@@ -1,0 +1,1014 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lucia Draw: Arte e Design com Alma Minimalista</title>
+    <!-- Font Inter do Google Fonts (Carregamento Assíncrono) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800;900&display=swap" rel="stylesheet">
+
+    <noscript><link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800;900&display=swap" rel="stylesheet"></noscript>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
+    <!-- Font Awesome para ícones -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+        /* Estilos CSS Personalizados */
+        :root {
+            --primary-bg: #f5f5f5; /* Off-white muito sutil */
+            --secondary-bg: #ffffff; /* Branco puro para seções de contraste */
+            --text-dark: #1a1a1a; /* Preto profundo para textos principais */
+            --text-light: #888888; /* Cinza médio-claro para textos secundários/detalhes */
+            --accent-color: #000000; /* Preto puro para acentos fortes, hover e estados ativos */
+            --navbar-bg: #1a1a1a; /* Preto profundo para a navbar */
+            --navbar-link: #ffffff; /* Branco puro para links da navbar */
+            --border-radius: 0.5rem; /* Cantos arredondados */
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--primary-bg);
+            color: var(--text-dark);
+            line-height: 1.6;
+            scroll-behavior: smooth; /* Rolagem suave para âncoras */
+        }
+
+        /* Utilidades e Classes Globais */
+        .rounded-corners {
+            border-radius: var(--border-radius) !important;
+        }
+
+        .section-padding {
+            padding: 80px 0;
+        }
+
+        .section-heading {
+            font-size: 2.8rem;
+            font-weight: 700;
+            color: var(--text-dark);
+            margin-bottom: 50px;
+            text-align: center;
+        }
+
+        /* Cabeçalho (Navbar) */
+        .navbar {
+            background-color: var(--navbar-bg);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            transition: background-color 0.3s ease; /* Transição para cor de fundo da navbar */
+        }
+
+        .navbar-brand {
+            font-size: 1.7rem;
+            font-weight: 900; /* Mais forte para o logo */
+            color: var(--navbar-link) !important;
+            transition: color 0.3s ease;
+        }
+
+        .navbar-brand:hover {
+            color: var(--text-light) !important; /* Um cinza mais claro no hover para o logo */
+        }
+
+        .navbar-nav .nav-link {
+            color: var(--navbar-link);
+            font-weight: 700; /* Mais forte para os links */
+            padding: 0.5rem 1rem;
+            transition: color 0.3s ease, background-color 0.3s ease;
+            border-radius: var(--border-radius);
+        }
+
+        .navbar-nav .nav-link:hover,
+        .navbar-nav .nav-link.active {
+            color: var(--text-light); /* Alterado para cinza mais claro para melhor contraste */
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+
+        /* Hero Section */
+        .hero-section {
+    /* Define a imagem de fundo, seguida pelo gradiente escuro para sobreposição */
+    background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('img/fundo.png');
+    background-color: var(--navbar-bg); /* Cor de fundo de fallback, caso a imagem não carregue */
+    background-size: cover; /* Garante que a imagem cubra toda a área */
+    background-position: center; /* Centraliza a imagem */
+    color: white;
+    padding: 150px 0;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 80vh;
+    animation: fadeIn 1s ease-out; /* Adiciona animação de entrada */
+}
+
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .hero-section h1 {
+            font-size: 3.8rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5);
+        }
+
+        .hero-section p {
+            font-size: 1.5rem;
+            font-weight: 300;
+            margin-bottom: 40px;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .hero-section .btn-primary {
+            background-color: var(--accent-color); /* Preto puro */
+            border-color: var(--accent-color);
+            color: white; /* Texto branco */
+            font-size: 1.2rem;
+            padding: 15px 40px;
+            border-radius: var(--border-radius);
+            transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        .hero-section .btn-primary:hover {
+            background-color: var(--text-light); /* Cinza mais claro no hover */
+            border-color: var(--text-light);
+            transform: translateY(-5px); /* Mais pronunciado para destacar */
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+        }
+
+        /* Seção de Destaques (Features/Projects Preview) */
+        .highlights-section .card {
+            border: 1px solid #e0e0e0; /* Borda sutil */
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05); /* Sombra mais leve */
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border-radius: var(--border-radius);
+            overflow: hidden; /* Garante que a imagem arredondada fique dentro do card */
+        }
+
+        .highlights-section .card:hover {
+            transform: translateY(-5px); /* Elevação sutil */
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+
+        .highlights-section .card-img-top {
+            height: 250px;
+            object-fit: cover;
+            border-top-left-radius: var(--border-radius);
+            border-top-right-radius: var(--border-radius);
+        }
+
+        .highlights-section .card-title {
+            font-weight: 600;
+            color: var(--text-dark);
+        }
+
+        .highlights-section .card-text {
+            color: var(--text-light);
+        }
+
+        .highlights-section .card-body .btn-link {
+            color: var(--text-dark); /* Cor do link mais escura */
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.3s ease;
+        }
+        .highlights-section .card-body .btn-link:hover {
+            color: var(--accent-color); /* Preto puro no hover */
+        }
+
+        /* Seção de Depoimentos */
+        .testimonials-section {
+            background-color: var(--secondary-bg);
+        }
+
+        .testimonial-card {
+            background-color: var(--primary-bg);
+            border: 1px solid #e0e0e0;
+            padding: 30px;
+            text-align: center;
+            border-radius: var(--border-radius);
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.03); /* Sombra ainda mais leve */
+        }
+
+        .testimonial-card .quote {
+            font-style: italic;
+            margin-bottom: 20px;
+            color: var(--text-dark);
+            font-size: 1.1rem;
+        }
+
+        .testimonial-card .author {
+            font-weight: 600;
+            color: var(--accent-color); /* Preto puro para o autor */
+        }
+
+        /* Portfólio */
+        .portfolio-section {
+            background-color: var(--primary-bg);
+        }
+
+        .portfolio-filters .btn {
+            background-color: transparent;
+            border: 1px solid var(--text-dark); /* Usa preto escuro para borda */
+            color: var(--text-dark);
+            margin: 5px;
+            padding: 8px 20px;
+            border-radius: var(--border-radius);
+            transition: all 0.3s ease;
+        }
+
+        .portfolio-filters .btn:hover,
+        .portfolio-filters .btn.active {
+            background-color: var(--text-dark); /* Fundo escuro no ativo/hover */
+            color: white;
+        }
+
+        .portfolio-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: var(--border-radius);
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05); /* Sombra mais leve */
+        }
+
+        .portfolio-item img {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.5s ease;
+        }
+
+        .portfolio-item:hover img {
+            transform: scale(1.05);
+        }
+
+        .portfolio-item .overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.6);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            opacity: 0;
+            transition: opacity 0.5s ease;
+            border-radius: var(--border-radius);
+            text-align: center;
+            padding: 20px;
+        }
+
+        .portfolio-item:hover .overlay {
+            opacity: 1;
+        }
+
+        .portfolio-item .overlay h5 {
+            font-weight: 700;
+            margin-bottom: 10px;
+            font-size: 1.5rem;
+        }
+
+        .portfolio-item .overlay p {
+            font-size: 0.9rem;
+        }
+
+        /* Página de Projeto Individual (Modal) */
+        .modal-content {
+            border-radius: var(--border-radius);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+        }
+
+        .modal-header {
+            border-bottom: none;
+            padding-bottom: 0;
+        }
+
+        .modal-body img {
+            max-width: 100%;
+            height: auto;
+            border-radius: var(--border-radius);
+            margin-bottom: 20px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Seção Sobre */
+        .about-section {
+            background-color: var(--secondary-bg);
+        }
+
+        .about-section img {
+            max-width: 100%;
+            height: auto;
+            border-radius: var(--border-radius);
+            box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+        }
+
+        /* Seção de Contato */
+        .contact-section {
+            background-color: var(--primary-bg);
+        }
+
+        .contact-section .form-control {
+            border-radius: var(--border-radius);
+            border: 1px solid #ced4da;
+            padding: 10px 15px;
+            box-shadow: none;
+            transition: border-color 0.3s ease;
+        }
+
+        .contact-section .form-control:focus {
+            border-color: var(--accent-color);
+            box-shadow: 0 0 0 0.25rem rgba(0, 0, 0, 0.25); /* Sombra do foco preta */
+        }
+
+        .contact-info p {
+            margin-bottom: 10px;
+            color: var(--text-dark);
+            font-size: 1.1rem;
+        }
+
+        .contact-info i {
+            color: var(--accent-color); /* Ícones de contato em preto */
+            margin-right: 10px;
+            font-size: 1.2rem;
+        }
+
+        /* Rodapé */
+        .footer {
+            background-color: var(--navbar-bg);
+            color: var(--navbar-link);
+            padding: 40px 0;
+            text-align: center;
+        }
+
+        .footer .social-icons a {
+            color: var(--navbar-link);
+            font-size: 1.8rem;
+            margin: 0 15px;
+            transition: color 0.3s ease;
+        }
+
+        .footer .social-icons a:hover {
+            color: var(--text-light); /* Cinza mais claro no hover dos ícones */
+        }
+
+        .footer p {
+            margin-top: 20px;
+            margin-bottom: 0;
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        /* Responsividade */
+        @media (max-width: 991.98px) {
+            .navbar-nav {
+                text-align: center;
+                margin-top: 20px;
+            }
+            .navbar-nav .nav-item {
+                margin: 10px 0;
+            }
+            .hero-section h1 {
+                font-size: 2.8rem;
+            }
+            .hero-section p {
+                font-size: 1.2rem;
+            }
+            .section-padding {
+                padding: 60px 0;
+            }
+            .section-heading {
+                font-size: 2.2rem;
+                margin-bottom: 30px;
+            }
+            .about-section img {
+                margin-bottom: 30px;
+            }
+        }
+
+        @media (max-width: 767.98px) {
+            .hero-section h1 {
+                font-size: 2.2rem;
+            }
+            .hero-section p {
+                font-size: 1rem;
+            }
+            .highlights-section .card,
+            .testimonial-card,
+            .portfolio-item {
+                margin-bottom: 30px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Cabeçalho (Navbar) -->
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="#home">Lucia Draw</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="#home">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#portfolio">Portfólio</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#about">Sobre</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#contact">Contato</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Seção Principal (Hero Section) -->
+    <section id="home" class="hero-section d-flex align-items-center justify-content-center">
+        <div class="text-center container">
+            <h1 class="display-3">Lucia Draw: Arte e Design com Alma Minimalista</h1>
+            <p class="lead">Unindo a paixão pela arte e o design para criar soluções visuais elegantes, funcionais e atemporais, com foco na estética minimalista.</p>
+            <a href="#portfolio" class="btn btn-primary">Ver Portfólio</a>
+        </div>
+    </section>
+
+    <!-- Seção de Destaques -->
+    <section id="highlights" class="section-padding highlights-section">
+        <div class="container">
+            <h2 class="section-heading">Projetos em Destaque</h2>
+            <div class="row g-4">
+                <div class="col-md-6 col-lg-4">
+                    <div class="card rounded-corners">
+                        <!-- IMAGEM DE DESTAQUE 1: Core Tech Port -->
+                        <img src="./img/projetos/core_tech_port.png" class="card-img-top rounded-corners" alt="Core Tech Port Design" onerror="this.onerror=null;this.src='https://placehold.co/250x250/cccccc/333333?text=Core+Tech'">
+                        <div class="card-body">
+                            <h5 class="card-title">Projeto "Core Tech Port"</h5>
+                            <p class="card-text">Desenvolvimento visual para tecnologia e inovação.</p>
+                            <a href="#portfolioModalCoreTech" class="btn btn-link" data-bs-toggle="modal" data-bs-target="#portfolioModalCoreTech">Ver Detalhes</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4">
+                    <div class="card rounded-corners">
+                        <!-- IMAGEM DE DESTAQUE 2: LOGO ROSSO DE VALLE -->
+                        <img src="./img/marcaidentidadevisual/taca.png" class="card-img-top rounded-corners" alt="Logo Rosso de Valle" onerror="this.onerror=null;this.src='https://placehold.co/250x250/cccccc/333333?text=Rosso+Valle'">
+                        <div class="card-body">
+                            <h5 class="card-title">Identidade Visual "Rosso de Valle"</h5>
+                            <p class="card-text">Criação da logo e embalagens para uma marca de vinhos sofisticada.</p>
+                            <a href="#portfolioModalRossoValle" class="btn btn-link" data-bs-toggle="modal" data-bs-target="#portfolioModalRossoValle">Ver Detalhes</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4">
+                    <div class="card rounded-corners">
+                        <!-- NOVO DESTAQUE: Coleção Vestidos Juninos -->
+                        <img src="./img/vestido/vestido1.png" class="card-img-top rounded-corners" alt="Vestido Junino Collection" onerror="this.onerror=null;this.src='https://placehold.co/250x250/cccccc/333333?text=Vestidos+Juninos'">
+                        <div class="card-body">
+                            <h5 class="card-title">Coleção Vestidos Juninos</h5>
+                            <p class="card-text">Designs exclusivos e vibrantes para festas juninas.</p>
+                            <a href="#portfolioModalVestidosJuninos" class="btn btn-link" data-bs-toggle="modal" data-bs-target="#portfolioModalVestidosJuninos">Ver Detalhes</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    
+   
+    <!-- Seção Portfólio -->
+    <section id="portfolio" class="section-padding portfolio-section">
+        <div class="container">
+            <h2 class="section-heading">Meu Portfólio</h2>
+            <div class="d-flex justify-content-center mb-5 portfolio-filters">
+                <button class="btn active" data-filter="all">Todos</button>
+                <button class="btn" data-filter="posters">Posters</button>
+                <button class="btn" data-filter="logos">Logos</button>
+                <button class="btn" data-filter="juninos">Vestidos Juninos</button>
+                <button class="btn" data-filter="ilustracoes">Ilustrações</button>
+            </div>
+            <div class="row g-4 portfolio-grid">
+                <!-- Projeto: Landing Page Toppage -->
+                <div class="col-md-6 col-lg-4 portfolio-item posters">
+                    <img src="./img/sitelandingpage/toppage.jpg" class="img-fluid rounded-corners" alt="Landing Page Toppage" onerror="this.onerror=null;this.src='https://placehold.co/300x300/cccccc/333333?text=Toppage'">
+                    <div class="overlay">
+                        <h5>Design "Landing Page Toppage"</h5>
+                        <p>Criação visual de uma landing page impactante.</p>
+                        <a href="#portfolioModalToppage" class="btn btn-outline-light btn-sm" data-bs-toggle="modal" data-bs-target="#portfolioModalToppage">Ver Projeto</a>
+                    </div>
+                </div>
+                <!-- Projeto: Semana Preta -->
+                <div class="col-md-6 col-lg-4 portfolio-item posters">
+                    <img src="./img/projetos/SEMANA_PRETA.png" class="img-fluid rounded-corners" alt="Poster Semana Preta" onerror="this.onerror=null;this.src='https://placehold.co/300x300/cccccc/333333?text=Semana+Preta'">
+                    <div class="overlay">
+                        <h5>Design "Semana Preta"</h5>
+                        <p>Campanha visual para evento cultural.</p>
+                        <a href="#portfolioModalSemanaPreta" class="btn btn-outline-light btn-sm" data-bs-toggle="modal" data-bs-target="#portfolioModalSemanaPreta">Ver Projeto</a>
+                    </div>
+                </div>
+                <!-- Projeto: Semana Tecnologia -->
+                <div class="col-md-6 col-lg-4 portfolio-item posters">
+                    <img src="./img/projetos/Semana_tecnologia.jpg" class="img-fluid rounded-corners" alt="Poster Semana Tecnologia" onerror="this.onerror=null;this.src='https://placehold.co/300x300/cccccc/333333?text=Semana+Tech'">
+                    <div class="overlay">
+                        <h5>Campanha "Semana Tecnologia"</h5>
+                        <p>Design visual para evento de tecnologia e inovação.</p>
+                        <a href="#portfolioModalSemanaTecnologia" class="btn btn-outline-light btn-sm" data-bs-toggle="modal" data-bs-target="#portfolioModalSemanaTecnologia">Ver Projeto</a>
+                    </div>
+                </div>
+                <!-- Projeto: Logo Rosso de Valle -->
+                <div class="col-md-6 col-lg-4 portfolio-item logos">
+                    <img src="./img/marcaidentidadevisual/taca.png" class="img-fluid rounded-corners" alt="Logo Rosso de Valle" onerror="this.onerror=null;this.src='https://placehold.co/300x300/cccccc/333333?text=Rosso+Valle+Logo'">
+                    <div class="overlay">
+                        <h5>Logo "Rosso de Valle"</h5>
+                        <p>Design de logo para marca de vinhos.</p>
+                        <a href="#portfolioModalRossoValle" class="btn btn-outline-light btn-sm" data-bs-toggle="modal" data-bs-target="#portfolioModalRossoValle">Ver Projeto</a>
+                    </div>
+                </div>
+                <!-- Projeto: Etiqueta Roupa (Movido para Logos) -->
+                <div class="col-md-6 col-lg-4 portfolio-item logos">
+                    <img src="./img/projetos/etiqueta_roupa.png" class="img-fluid rounded-corners" alt="Etiqueta Roupa" onerror="this.onerror=null;this.src='https://placehold.co/300x300/cccccc/333333?text=Etiqueta+Roupas'">
+                    <div class="overlay">
+                        <h5>Etiqueta "Conforto & Estilo"</h5>
+                        <p>Criação de etiquetas para moda.</p>
+                        <a href="#portfolioModalEtiquetaRoupa" class="btn btn-outline-light btn-sm" data-bs-toggle="modal" data-bs-target="#portfolioModalEtiquetaRoupa">Ver Projeto</a>
+                    </div>
+                </div>
+                <!-- Projeto: Etiqueta Roupa 3 (Movido para Logos) -->
+                <div class="col-md-6 col-lg-4 portfolio-item logos">
+                    <img src="./img/projetos/etiqueta_roupa3.jpg" class="img-fluid rounded-corners" alt="Branding Etiqueta Roupa 3" onerror="this.onerror=null;this.src='https://placehold.co/300x300/cccccc/333333?text=Tipografia+LM'">
+                    <div class="overlay">
+                        <h5>Tipografia e Aplicação "LM"</h5>
+                        <p>Estudo de tipografia para branding de moda.</p>
+                        <a href="#portfolioModalEtiquetaRoupa3" class="btn btn-outline-light btn-sm" data-bs-toggle="modal" data-bs-target="#portfolioModalEtiquetaRoupa3">Ver Projeto</a>
+                    </div>
+                </div>
+                <!-- Projeto: Coleção Vestidos Juninos (ADICIONADO) -->
+                <div class="col-md-6 col-lg-4 portfolio-item juninos">
+                    <img src="./img/vestido/vestido1.png" class="img-fluid rounded-corners" alt="Vestido Junino Collection" onerror="this.onerror=null;this.src='https://placehold.co/300x300/cccccc/333333?text=Vestidos+Juninos'">
+                    <div class="overlay">
+                        <h5>Coleção Vestidos Juninos</h5>
+                        <p>Designs exclusivos para festas juninas.</p>
+                        <a href="#portfolioModalVestidosJuninos" class="btn btn-outline-light btn-sm" data-bs-toggle="modal" data-bs-target="#portfolioModalVestidosJuninos">Ver Coleção</a>
+                    </div>
+                </div>
+                <!-- Projeto: Etiqueta Roupa 2 (Ilustração) -->
+                <div class="col-md-6 col-lg-4 portfolio-item ilustracoes">
+                    <img src="./img/projetos/etiqueta_roupa2.jpg" class="img-fluid rounded-corners" alt="Ilustração Etiqueta Roupa 2" onerror="this.onerror=null;this.src='https://placehold.co/300x300/cccccc/333333?text=Ilustração+Essência'">
+                    <div class="overlay">
+                        <h5>Ilustração "Essência"</h5>
+                        <p>Arte digital para linha de vestuário.</p>
+                        <a href="#portfolioModalEtiquetaRoupa2" class="btn btn-outline-light btn-sm" data-bs-toggle="modal" data-bs-target="#portfolioModalEtiquetaRoupa2">Ver Projeto</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Modals para Detalhes dos Projetos -->
+
+    <!-- Modal: Landing Page Toppage -->
+    <div class="modal fade" id="portfolioModalToppage" tabindex="-1" aria-labelledby="portfolioModalToppageLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+            <div class="modal-content rounded-corners">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="portfolioModalToppageLabel">Design "Landing Page Toppage"</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <img src="./img/sitelandingpage/toppage.jpg" class="img-fluid rounded-corners mb-3" alt="Detalhe Landing Page Toppage" onerror="this.onerror=null;this.src='https://placehold.co/800x600/cccccc/333333?text=Toppage+Detalhe'">
+                    <img src="./img/sitelandingpage/divulga1.jpg" class="img-fluid rounded-corners mb-3" alt="Detalhe Divulgação 1" onerror="this.onerror=null;this.src='https://placehold.co/800x600/cccccc/333333?text=Divulgação+1'">
+                    <img src="./img/sitelandingpage/divulga2.jpg" class="img-fluid rounded-corners mb-3" alt="Detalhe Divulgação 2" onerror="this.onerror=null;this.src='https://placehold.co/800x600/cccccc/333333?text=Divulgação+2'">
+                    <img src="./img/sitelandingpage/divulga3.jpg" class="img-fluid rounded-corners mb-3" alt="Detalhe Divulgação 3" onerror="this.onerror=null;this.src='https://placehold.co/800x600/cccccc/333333?text=Divulgação+3'">
+                    <img src="./img/sitelandingpage/divulga4.jpg" class="img-fluid rounded-corners mb-3" alt="Detalhe Divulgação 4" onerror="this.onerror=null;this.src='https://placehold.co/800x600/cccccc/333333?text=Divulgação+4'">
+                    <img src="./img/sitelandingpage/divulga5.jpg" class="img-fluid rounded-corners mb-3" alt="Detalhe Divulgação 5" onerror="this.onerror=null;this.src='https://placehold.co/800x600/cccccc/333333?text=Divulgação+5'">
+                    <img src="./img/sitelandingpage/divulga6.jpg" class="img-fluid rounded-corners mb-3" alt="Detalhe Divulgação 6" onerror="this.onerror=null;this.src='https://placehold.co/800x600/cccccc/333333?text=Divulgação+6'">
+                    <img src="./img/sitelandingpage/divulga7.jpg" class="img-fluid rounded-corners mb-3" alt="Detalhe Divulgação 7" onerror="this.onerror=null;this.src='https://placehold.co/800x600/cccccc/333333?text=Divulgação+7'">
+                    <img src="./img/sitelandingpage/divulga8.png" class="img-fluid rounded-corners mb-3" alt="Detalhe Divulgação 8" onerror="this.onerror=null;this.src='https://placehold.co/800x600/cccccc/333333?text=Divulgação+8'">
+                    <img src="./img/sitelandingpage/divulga9.png" class="img-fluid rounded-corners mb-3" alt="Detalhe Divulgação 9" onerror="this.onerror=null;this.src='https://placehold.co/800x600/cccccc/333333?text=Divulgação+9'">
+                    <img src="./img/sitelandingpage/divulga10.png" class="img-fluid rounded-corners mb-3" alt="Detalhe Divulgação 10" onerror="this.onerror=null;this.src='https://placehold.co/800x600/cccccc/333333?text=Divulgação+10'">
+                    <img src="./img/sitelandingpage/divulga11.png" class="img-fluid rounded-corners mb-3" alt="Detalhe Divulgação 11" onerror="this.onerror=null;this.src='https://placehold.co/800x600/cccccc/333333?text=Divulgação+11'">
+                    <img src="./img/sitelandingpage/divulga12.png" class="img-fluid rounded-corners mb-3" alt="Detalhe Divulgação 12" onerror="this.onerror=null;this.src='https://placehold.co/800x600/cccccc/333333?text=Divulgação+12'">
+                    <p><strong>Contexto:</strong> Criação de uma landing page focada em conversão para um novo produto ou serviço, destacando seus principais benefícios e chamadas para ação. As imagens adicionais ilustram diferentes elementos e seções da campanha.</p>
+                    <p><strong>Abordagem:</strong> O design é limpo e direto, com foco na experiência do usuário e na clareza da mensagem. Elementos visuais foram estrategicamente utilizados para guiar o olhar do visitante e incentivar a interação.</p>
+                    <p><strong>Detalhes Técnicos:</strong> Design de interface em Figma, prototipagem, otimização de imagens para web.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal: Core Tech Port -->
+    <div class="modal fade" id="portfolioModalCoreTech" tabindex="-1" aria-labelledby="portfolioModalCoreTechLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+            <div class="modal-content rounded-corners">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="portfolioModalCoreTechLabel">Projeto "Core Tech Port"</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <img src="./img/projetos/core_tech_port.png" class="img-fluid rounded-corners" alt="Detalhe Core Tech Port" onerror="this.onerror=null;this.src='https://placehold.co/800x600/cccccc/333333?text=Core+Tech+Detalhe'">
+                    <p><strong>Contexto:</strong> Desenvolvimento de uma identidade visual robusta para uma startup de tecnologia focada em soluções portuárias.</p>
+                    <p><strong>Abordagem:</strong> O design reflete modernidade, segurança e eficiência, utilizando formas geométricas e uma paleta de cores sóbria para transmitir profissionalismo e inovação.</p>
+                    <p><strong>Detalhes Técnicos:</strong> Criação de logo, paleta de cores e tipografia. Desenvolvimento de mockups de aplicação em materiais de comunicação.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal para Identidade Visual "Rosso de Valle" -->
+    <div class="modal fade" id="portfolioModalRossoValle" tabindex="-1" aria-labelledby="portfolioModalRossoValleLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+            <div class="modal-content rounded-corners">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="portfolioModalRossoValleLabel">Identidade Visual "Rosso de Valle"</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <!-- IMAGEM DA LOGO ROSSO DE VALLE (TAÇA) -->
+                    <img src="./img/marcaidentidadevisual/taca.png" class="img-fluid rounded-corners mb-3" alt="Logo Rosso de Valle - Taça" onerror="this.onerror=null;this.src='https://placehold.co/800x600/cccccc/333333?text=Rosso+Valle+Logo+2'">
+                    <!-- IMAGEM DAS EMBALAGENS ROSSO DE VALLE -->
+                    <img src="./img/marcaidentidadevisual/embalagens.png" class="img-fluid rounded-corners mb-3" alt="Embalagens Rosso de Valle" onerror="this.onerror=null;this.src='https://placehold.co/800x600/cccccc/333333?text=Embalagens+Rosso'">
+                    <p><strong>Contexto:</strong> Desenvolvimento completo da identidade visual para a marca de vinhos "Rosso de Valle", buscando transmitir elegância e tradição.</p>
+                    <p><strong>Abordagem:</strong> A logo, centrada na silhueta de uma taça, foi desenhada para ser sofisticada e memorável. As embalagens foram criadas para complementar a identidade, utilizando um design limpo e materiais que realçam a qualidade do produto.</p>
+                    <p><strong>Detalhes Técnicos:</strong> Design de logo e rótulos em Adobe Illustrator e Photoshop, mockups de apresentação.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal: O Cortiço -->
+    <div class="modal fade" id="portfolioModalOCortico" tabindex="-1" aria-labelledby="portfolioModalOCorticoLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+            <div class="modal-content rounded-corners">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="portfolioModalOCorticoLabel">Design Gráfico "O Cortiço"</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <img src="./img/projetos/O_CORTIÇO.png" class="img-fluid rounded-corners" alt="Detalhe Capa O Cortiço" onerror="this.onerror=null;this.src='https://placehold.co/800x600/cccccc/333333?text=O+Cortiço+Detalhe'">
+                    <p><strong>Contexto:</strong> Criação de uma capa e elementos gráficos para uma nova edição da clássica obra "O Cortiço".</p>
+                    <p><strong>Abordagem:</strong> O design busca capturar a essência da narrativa e a atmosfera da época, com ilustrações que remetem à arquitetura e ao cotidiano do romance, mantendo uma estética moderna.</p>
+                    <p><strong>Detalhes Técnicos:</strong> Ilustração e design de capa em Adobe Illustrator e InDesign.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal: Semana Preta -->
+    <div class="modal fade" id="portfolioModalSemanaPreta" tabindex="-1" aria-labelledby="portfolioModalSemanaPretaLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+            <div class="modal-content rounded-corners">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="portfolioModalSemanaPretaLabel">Design "Semana Preta"</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <img src="./img/projetos/SEMANA_PRETA.png" class="img-fluid rounded-corners" alt="Detalhe Semana Preta" onerror="this.onerror=null;this.src='https://placehold.co/800x600/cccccc/333333?text=Semana+Preta+Detalhe'">
+                    <p><strong>Contexto:</strong> Desenvolvimento de materiais de divulgação para a "Semana Preta", um evento cultural focado na valorização da cultura afro-brasileira.</p>
+                    <p><strong>Abordagem:</strong> A identidade visual é vibrante e impactante, utilizando elementos gráficos que simbolizam a força e a riqueza cultural, com uma tipografia expressiva.</p>
+                    <p><strong>Detalhes Técnicos:</strong> Criação de posters, banners digitais e peças para redes sociais em Adobe Photoshop e Illustrator.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal: Etiqueta Roupa -->
+    <div class="modal fade" id="portfolioModalEtiquetaRoupa" tabindex="-1" aria-labelledby="portfolioModalEtiquetaRoupaLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+            <div class="modal-content rounded-corners">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="portfolioModalEtiquetaRoupaLabel">Etiqueta "Conforto & Estilo"</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <img src="./img/projetos/etiqueta_roupa.png" class="img-fluid rounded-corners mb-3" alt="Detalhe Etiqueta Roupa" onerror="this.onerror=null;this.src='https://placehold.co/800x600/cccccc/333333?text=Etiqueta+Detalhe'">
+                    <img src="./img/projetos/etiqueta_roupa2.png" class="img-fluid rounded-corners mb-3" alt="Detalhe Etiqueta Roupa 2" onerror="this.onerror=null;this.src='https://placehold.co/800x600/cccccc/333333?text=Etiqueta+Detalhe+2'">
+                    <p><strong>Contexto:</strong> Design de etiquetas e tags para uma nova coleção de roupas que busca combinar conforto com design moderno.</p>
+                    <p><strong>Abordagem:</strong> As etiquetas são minimalistas, mas com detalhes que realçam a qualidade e o conceito da marca. A tipografia e os pequenos ícones reforçam a mensagem de conforto e estilo.</p>
+                    <p><strong>Detalhes Técnicos:</strong> Design em Adobe Illustrator, preparação para impressão em diferentes materiais.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal: Etiqueta Roupa 2 (Ilustração) -->
+    <div class="modal fade" id="portfolioModalEtiquetaRoupa2" tabindex="-1" aria-labelledby="portfolioModalEtiquetaRoupa2Label" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+            <div class="modal-content rounded-corners">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="portfolioModalEtiquetaRoupa2Label">Ilustração "Essência"</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <img src="./img/projetos/etiqueta_roupa2.jpg" class="img-fluid rounded-corners" alt="Ilustração Etiqueta Roupa" onerror="this.onerror=null;this.src='https://placehold.co/800x600/cccccc/333333?text=Ilustração+Essência+Detalhe'">
+                    <p><strong>Contexto:</strong> Criação de uma ilustração exclusiva para ser aplicada em camisetas e outras peças de uma coleção de moda autoral.</p>
+                    <p><strong>Abordagem:</strong> A ilustração, com traços limpos e foco na forma, busca transmitir uma mensagem de individualidade e originalidade, alinhada à estética da marca.</p>
+                    <p><strong>Detalhes Técnicos:</strong> Ilustração digital vetorizada em Adobe Illustrator.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal: Etiqueta Roupa 3 (Branding/Logo) -->
+    <div class="modal fade" id="portfolioModalEtiquetaRoupa3" tabindex="-1" aria-labelledby="portfolioModalEtiquetaRoupa3Label" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+            <div class="modal-content rounded-corners">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="portfolioModalEtiquetaRoupa3Label">Tipografia e Aplicação "LM"</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <img src="./img/projetos/etiqueta_roupa3.jpg" class="img-fluid rounded-corners" alt="Mockup Tipografia LM" onerror="this.onerror=null;this.src='https://placehold.co/800x600/cccccc/333333?text=Tipografia+LM+Detalhe'">
+                    <p><strong>Contexto:</strong> Estudo de tipografia e aplicação de logo para uma marca de moda com iniciais "LM".</p>
+                    <p><strong>Abordagem:</strong> Foco na criação de uma identidade tipográfica que seja versátil e elegante, aplicável em diferentes materiais de branding, desde tags a embalagens.</p>
+                    <p><strong>Detalhes Técnicos:</strong> Pesquisa e desenvolvimento de fontes, criação de mockups para visualização de aplicação.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal: Semana Tecnologia -->
+    <div class="modal fade" id="portfolioModalSemanaTecnologia" tabindex="-1" aria-labelledby="portfolioModalSemanaTecnologiaLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+            <div class="modal-content rounded-corners">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="portfolioModalSemanaTecnologiaLabel">Campanha "Semana Tecnologia"</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <img src="./img/projetos/Semana_tecnologia.jpg" class="img-fluid rounded-corners" alt="Detalhe Campanha Semana Tecnologia" onerror="this.onerror=null;this.src='https://placehold.co/800x600/cccccc/333333?text=Semana+Tecnologia+Detalhe'">
+                    <p><strong>Contexto:</strong> Criação de uma campanha visual abrangente para a "Semana da Tecnologia", um evento que explora as últimas inovações e tendências tecnológicas.</p>
+                    <p><strong>Abordagem:</strong> O design é futurista e dinâmico, utilizando elementos gráficos que remetem à conectividade e ao avanço tecnológico, com uma paleta de cores moderna.</p>
+                    <p><strong>Detalhes Técnicos:</strong> Desenvolvimento de posters, peças digitais para web e redes sociais.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal: Coleção Vestidos Juninos -->
+    <div class="modal fade" id="portfolioModalVestidosJuninos" tabindex="-1" aria-labelledby="portfolioModalVestidosJuninosLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+            <div class="modal-content rounded-corners">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="portfolioModalVestidosJuninosLabel">Coleção Vestidos Juninos</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <img src="./img/vestido/vestido1.png" class="img-fluid rounded-corners mb-3" alt="Vestido Junino 1" onerror="this.onerror=null;this.src='https://placehold.co/800x600/cccccc/333333?text=Vestido+Junino+1'">
+                    <img src="./img/vestido/vestido2.png" class="img-fluid rounded-corners mb-3" alt="Vestido Junino 2" onerror="this.onerror=null;this.src='https://placehold.co/800x600/cccccc/333333?text=Vestido+Junino+2'">
+                    <img src="./img/vestido/vestido3.png" class="img-fluid rounded-corners mb-3" alt="Vestido Junino 3" onerror="this.onerror=null;this.src='https://placehold.co/800x600/cccccc/333333?text=Vestido+Junino+3'">
+                    <img src="./img/vestido/vestido4.png" class="img-fluid rounded-corners mb-3" alt="Vestido Junino 4" onerror="this.onerror=null;this.src='https://placehold.co/800x600/cccccc/333333?text=Vestido+Junino+4'">
+                    <img src="./img/vestido/vestido5.png" class="img-fluid rounded-corners mb-3" alt="Vestido Junino 5" onerror="this.onerror=null;this.src='https://placehold.co/800x600/cccccc/333333?text=Vestido+Junino+5'">
+                    <img src="./img/vestido/vestido6.png" class="img-fluid rounded-corners mb-3" alt="Vestido Junino 6" onerror="this.onerror=null;this.src='https://placehold.co/800x600/cccccc/333333?text=Vestido+Junino+6'">
+                    <p><strong>Contexto:</strong> Apresentação de uma coleção exclusiva de vestidos para festas juninas, com designs que celebram a tradição com um toque contemporâneo.</p>
+                    <p><strong>Abordagem:</strong> Cada vestido é uma peça única, com atenção aos detalhes artesanais, tecidos de qualidade e modelagens que valorizam o corpo e o movimento característico das danças juninas.</p>
+                    <p><strong>Processo Criativo:</strong> Inclui desde a inspiração em elementos culturais brasileiros até o processo de croqui, escolha de materiais, bordados e acabamentos.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Seção Sobre (Lucia Draw) -->
+    <section id="about" class="section-padding about-section">
+        <div class="container">
+            <h2 class="section-heading">Sobre Lucia Draw</h2>
+            <div class="row align-items-center">
+                <div class="col-lg-5 mb-4 mb-lg-0">
+                    <!-- CAMINHO DA IMAGEM PARA "SOBRE LUCIA" -->
+                    <img src="./img/about-lucia.jpg" class="img-fluid rounded-corners" alt="Foto de Lucia Draw" onerror="this.onerror=null;this.src='https://placehold.co/500x500/cccccc/333333?text=About+Lucia'">
+                </div>
+                <div class="col-lg-7">
+                    <h3>Minha História e Filosofia</h3>
+                    <p class="lead">Olá! Sou Lucia, a mente criativa por trás de Lucia Draw. Desde cedo, soube que minha paixão estava em transformar ideias em realidade visual.</p>
+                    <p>Minha jornada no mundo do design e da arte é movida pela busca constante da simplicidade elegante. Acredito que o verdadeiro impacto reside na clareza e na essência, onde cada elemento tem um propósito e contribui para a beleza do todo.</p>
+                    <p>Em cada projeto, seja um logo minimalista, um poster vibrante ou um vestido junino artesanal, meu objetivo é infundir alma e originalidade, sempre com um olhar atento à funcionalidade e à estética minimalista.</p>
+                    <h4>Habilidades e Expertise:</h4>
+                    <ul class="list-unstyled">
+                        <li><i class="fas fa-check-circle me-2" style="color: var(--accent-color);"></i> Design Gráfico e Branding</li>
+                        <li><i class="fas fa-check-circle me-2" style="color: var(--accent-color);"></i> Ilustração Digital e Tradicional</li>
+                        <li><i class="fas fa-check-circle me-2" style="color: var(--accent-color);"></i> Design de Moda (Especialidade: Vestidos Juninos)</li>
+                        <li><i class="fas fa-check-circle me-2" style="color: var(--accent-color);"></i> Direção de Arte</li>
+                        <li><i class="fas fa-check-circle me-2" style="color: var(--accent-color);"></i> UX/UI Design Básico</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Seção de Contato -->
+    <section id="contact" class="section-padding contact-section">
+        <div class="container">
+            <h2 class="section-heading">Entre em Contato</h2>
+            <div class="row justify-content-center">
+                <div class="col-lg-8">
+                    <p class="text-center mb-5">Tenho certeza que podemos criar algo incrível juntos. Preencha o formulário abaixo ou entre em contato diretamente.</p>
+                    <form id="contactForm">
+                        <div class="mb-3">
+                            <label for="name" class="form-label">Nome Completo</label>
+                            <input type="text" class="form-control rounded-corners" id="name" placeholder="Seu nome" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="email" class="form-label">Endereço de E-mail</label>
+                            <input type="email" class="form-control rounded-corners" id="email" placeholder="seu.email@exemplo.com" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="subject" class="form-label">Assunto</label>
+                            <input type="text" class="form-control rounded-corners" id="subject" placeholder="Assunto da mensagem" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="message" class="form-label">Sua Mensagem</label>
+                            <textarea class="form-control rounded-corners" id="message" rows="6" placeholder="Escreva sua mensagem aqui..." required></textarea>
+                        </div>
+                        <div class="d-grid gap-2">
+                            <button type="submit" class="btn btn-primary btn-lg rounded-corners" id="submitButton">Enviar Mensagem</button>
+                        </div>
+                    </form>
+                    <div class="contact-info text-center mt-5">
+                        <p><i class="fas fa-envelope" style="color: var(--accent-color);"></i> lucia.draw@email.com</p>
+                        <p><i class="fas fa-phone" style="color: var(--accent-color);"></i> (XX) XXXX-XXXX (Opcional)</p>
+                        <div class="social-icons mt-4">
+                            <a href="https://instagram.com/luciadraw" target="_blank" class="text-decoration-none"><i class="fab fa-instagram"></i></a>
+                            <a href="https://linkedin.com/in/luciadraw" target="_blank" class="text-decoration-none ms-3"><i class="fab fa-linkedin-in"></i></a>
+                            <a href="https://behance.net/luciadraw" target="_blank" class="text-decoration-none ms-3"><i class="fab fa-behance"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Rodapé -->
+    <footer class="footer">
+        <div class="container">
+            <div class="social-icons">
+                <a href="https://instagram.com/luciadraw" target="_blank"><i class="fab fa-instagram"></i></a>
+                <a href="https://linkedin.com/in/luciadraw" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+                <a href="https://behance.net/luciadraw" target="_blank"><i class="fab fa-behance"></i></a>
+            </div>
+            <p>&copy; 2025 Lucia Draw. Todos os direitos reservados.</p>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS (Popper.js e Bootstrap JS) -->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js" crossorigin="anonymous"></script>
+    <script>
+        // JavaScript para funcionalidades do site
+
+        // Adiciona um listener para o evento show.bs.modal para debug
+        document.addEventListener('show.bs.modal', function (event) {
+            console.log('Modal está prestes a ser exibido:', event.target.id);
+        });
+        document.addEventListener('hidden.bs.modal', function (event) {
+            console.log('Modal foi escondido:', event.target.id);
+        });
+
+
+        // Smooth scroll para links da navegação
+        document.querySelectorAll('.navbar-nav .nav-link').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href').substring(1);
+                const targetElement = document.getElementById(targetId);
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - document.querySelector('.navbar').offsetHeight,
+                        behavior: 'smooth'
+                    });
+                }
+                // Fecha o navbar responsivo após o clique em mobile
+                if (window.innerWidth < 992) {
+                    const navbarCollapse = document.getElementById('navbarNav');
+                    const bsCollapse = bootstrap.Collapse.getInstance(navbarCollapse);
+                    if (bsCollapse) {
+                        bsCollapse.hide();
+                    }
+                }
+            });
+        });
+
+        // Lógica de filtro do portfólio
+        document.addEventListener('DOMContentLoaded', function() {
+            const filterButtons = document.querySelectorAll('.portfolio-filters .btn');
+            const portfolioItems = document.querySelectorAll('.portfolio-grid .portfolio-item');
+
+            filterButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    // Remove 'active' de todos os botões
+                    filterButtons.forEach(btn => btn.classList.remove('active'));
+                    // Adiciona 'active' ao botão clicado
+                    this.classList.add('active');
+
+                    const filterValue = this.getAttribute('data-filter');
+
+                    portfolioItems.forEach(item => {
+                        if (filterValue === 'all' || item.classList.contains(filterValue)) {
+                            item.style.display = 'block'; // Mostra o item
+                        } else {
+                            item.style.display = 'none'; // Esconde o item
+                        }
+                    });
+                });
+            });
+
+            // Adiciona funcionalidade para o formulário de contato (apenas loga no console)
+            const contactForm = document.getElementById('contactForm');
+            const submitButton = document.getElementById('submitButton');
+
+            if (contactForm && submitButton) {
+                contactForm.addEventListener('submit', function(e) {
+                    e.preventDefault(); // Impede o envio padrão do formulário
+
+                    // Desabilita o botão e muda o texto
+                    submitButton.disabled = true;
+                    submitButton.innerText = 'Enviando...';
+
+                    const userName = document.getElementById('name').value;
+                    const userEmail = document.getElementById('email').value;
+                    const subject = document.getElementById('subject').value;
+                    const message = document.getElementById('message').value;
+
+                    // Simula um envio (em um ambiente real, você faria uma requisição AJAX/fetch aqui)
+                    setTimeout(() => {
+                        console.log('Formulário enviado!');
+                        console.log('Nome:', userName);
+                        console.log('Email:', userEmail);
+                        console.log('Assunto:', subject);
+                        console.log('Mensagem:', message);
+
+                        // Reabilita o botão e restaura o texto
+                        submitButton.disabled = false;
+                        submitButton.innerText = 'Enviar Mensagem';
+
+                        // Exibe o modal de confirmação
+                        const myModal = new bootstrap.Modal(document.getElementById('confirmationModal'), {
+                            keyboard: false
+                        });
+                        document.getElementById('confirmationModalBody').innerText = `Obrigado, ${userName}! Sua mensagem foi enviada com sucesso. Em breve entraremos em contato.`;
+                        myModal.show();
+                        contactForm.reset(); // Limpa o formulário
+                    }, 2000); // Simula 2 segundos de atraso para o envio
+                });
+            }
+        });
+
+        // Adiciona classe 'active' ao link da navbar quando a seção correspondente está visível
+        const sections = document.querySelectorAll('section');
+        const navLinks = document.querySelectorAll('.navbar-nav .nav-link');
+        const navbar = document.querySelector('.navbar'); // Get the navbar element
+
+        window.addEventListener('scroll', () => {
+            const navbarHeight = navbar.offsetHeight; // Get height dynamically
+            let current = '';
+
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop - navbarHeight;
+                const sectionHeight = section.clientHeight;
+                if (pageYOffset >= sectionTop && pageYOffset < sectionTop + sectionHeight) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href').includes(current)) {
+                    link.classList.add('active');
+                }
+            });
+        });
+
+    </script>
+
+    <!-- Modal de Confirmação Genérico (substituindo alert) -->
+    <div class="modal fade" id="confirmationModal" tabindex="-1" aria-labelledby="confirmationModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content rounded-corners">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="confirmationModalLabel">Confirmação</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body" id="confirmationModalBody">
+                    <!-- Mensagem será inserida via JS -->
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary rounded-corners" data-bs-dismiss="modal">Fechar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
