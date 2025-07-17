@@ -208,28 +208,44 @@
             background-color: var(--primary-bg);
         }
 
-        .portfolio-filters {
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap; /* Permite que os botões quebrem a linha em telas menores */
-            margin-bottom: 50px;
-        }
-
-        .portfolio-filters .btn {
+        /* Estilo para o Dropdown de Filtro */
+        .portfolio-filters .dropdown-toggle {
             background-color: transparent;
-            border: 1px solid var(--text-dark); /* Usa preto escuro para borda */
+            border: 1px solid var(--text-dark);
             color: var(--text-dark);
-            margin: 5px;
             padding: 8px 20px;
             border-radius: var(--border-radius);
             transition: all 0.3s ease;
         }
 
-        .portfolio-filters .btn:hover,
-        .portfolio-filters .btn.active {
-            background-color: var(--text-dark); /* Fundo escuro no ativo/hover */
+        .portfolio-filters .dropdown-toggle:hover,
+        .portfolio-filters .dropdown-toggle:focus,
+        .portfolio-filters .dropdown-toggle.show {
+            background-color: var(--text-dark);
+            color: white;
+            border-color: var(--text-dark);
+            box-shadow: none; /* Remove a sombra padrão do foco do Bootstrap */
+        }
+
+        .portfolio-filters .dropdown-menu {
+            border-radius: var(--border-radius);
+            border: 1px solid #e0e0e0;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .portfolio-filters .dropdown-item {
+            color: var(--text-dark);
+            font-weight: 500;
+            padding: 8px 15px;
+            transition: background-color 0.2s ease, color 0.2s ease;
+        }
+
+        .portfolio-filters .dropdown-item:hover,
+        .portfolio-filters .dropdown-item.active {
+            background-color: var(--accent-color);
             color: white;
         }
+
 
         .portfolio-item {
             position: relative;
@@ -240,8 +256,8 @@
 
         .portfolio-item img {
             width: 100%;
-            height: 300px;
-            object-fit: cover;
+            height: 300px; /* Mantém uma altura consistente para as miniaturas */
+            object-fit: cover; /* Garante que a imagem preencha o espaço sem distorcer */
             display: block;
             transition: transform 0.5s ease;
         }
@@ -392,9 +408,16 @@
             .about-section img {
                 margin-bottom: 30px;
             }
-            .portfolio-filters .btn {
-                flex: 1 1 auto; /* Permite que os botões se expandam para preencher o espaço */
-                max-width: 48%; /* Duas colunas em telas menores, com um pequeno espaço */
+            /* Dropdown de filtro em telas menores */
+            .portfolio-filters .dropdown {
+                width: 100%;
+                text-align: center;
+            }
+            .portfolio-filters .dropdown-toggle {
+                width: 100%;
+            }
+            .portfolio-filters .dropdown-menu {
+                width: 100%;
             }
         }
 
@@ -409,9 +432,6 @@
             .testimonial-card,
             .portfolio-item {
                 margin-bottom: 30px;
-            }
-            .portfolio-filters .btn {
-                max-width: 100%; /* Cada botão em sua própria linha em telas muito pequenas */
             }
             .contact-info p {
                 font-size: 1rem; /* Ajuste para melhor leitura em mobile */
@@ -434,10 +454,6 @@
             .hero-section .btn-primary {
                 font-size: 1rem;
                 padding: 12px 30px;
-            }
-            .portfolio-filters .btn {
-                margin: 3px; /* Espaçamento menor entre botões em telas pequenas */
-                padding: 6px 15px;
             }
         }
     </style>
@@ -496,8 +512,8 @@
                         <img src="./img/marcaidentidadevisual/taca.png" class="card-img-top rounded-corners" alt="Logo Rosso de Valle" onerror="this.onerror=null;this.src='https://placehold.co/250x250/cccccc/333333?text=Rosso+Valle'">
                         <div class="card-body">
                             <h5 class="card-title">Identidade Visual "Rosso de Valle"</h5>
-                            <p class="card-text">Criação da logo e embalagens para uma marca de vinhos sofisticada.</p>
-                            <a href="#portfolioModalRossoValle" class="btn btn-link" data-bs-toggle="modal" data-bs-target="#portfolioModalRossoValle">Ver Detalhes</a>
+                            <p class="card-text">Criação de logo e embalagens para uma marca de vinhos sofisticada.</p>
+                            <a href="#portfolioModalRossoValleCompleta" class="btn btn-link" data-bs-toggle="modal" data-bs-target="#portfolioModalRossoValleCompleta">Ver Detalhes</a>
                         </div>
                     </div>
                 </div>
@@ -521,12 +537,20 @@
         <div class="container">
             <h2 class="section-heading">Meu Portfólio</h2>
             <div class="d-flex justify-content-center mb-5 portfolio-filters">
-                <button class="btn active" data-filter="all">Todos</button>
-                <button class="btn" data-filter="posters">Posters</button>
-                <button class="btn" data-filter="logos">Logos</button>
-                <button class="btn" data-filter="juninos">Vestidos Juninos</button>
-                <button class="btn" data-filter="ilustracoes">Ilustrações</button>
-                <button class="btn" data-filter="carrossel-midias-sociais">Carrossel Mídias Sociais</button> </div>
+                <div class="dropdown">
+                    <button class="btn dropdown-toggle" type="button" id="portfolioFilterDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                        Filtrar por Categoria
+                    </button>
+                    <ul class="dropdown-menu" aria-labelledby="portfolioFilterDropdown">
+                        <li><a class="dropdown-item active" href="#" data-filter="all">Todos</a></li>
+                        <li><a class="dropdown-item" href="#" data-filter="posters">Posters</a></li>
+                        <li><a class="dropdown-item" href="#" data-filter="identidades-visuais">Identidades Visuais</a></li>
+                        <li><a class="dropdown-item" href="#" data-filter="juninos">Vestidos Juninos</a></li>
+                        <li><a class="dropdown-item" href="#" data-filter="ilustracoes">Ilustrações</a></li>
+                        <li><a class="dropdown-item" href="#" data-filter="carrossel-midias-sociais">Carrossel Mídias Sociais</a></li>
+                    </ul>
+                </div>
+            </div>
             <div class="row g-4 portfolio-grid">
                 <div class="col-md-6 col-lg-4 portfolio-item posters">
                     <img src="./img/sitelandingpage/toppage.jpg" class="img-fluid rounded-corners" alt="Landing Page Toppage" onerror="this.onerror=null;this.src='https://placehold.co/300x300/cccccc/333333?text=Toppage'">
@@ -552,15 +576,17 @@
                         <a href="#portfolioModalSemanaTecnologia" class="btn btn-outline-light btn-sm" data-bs-toggle="modal" data-bs-target="#portfolioModalSemanaTecnologia">Ver Projeto</a>
                     </div>
                 </div>
-                <div class="col-md-6 col-lg-4 portfolio-item logos">
-                    <img src="./img/marcaidentidadevisual/taca.png" class="img-fluid rounded-corners" alt="Logo Rosso de Valle" onerror="this.onerror=null;this.src='https://placehold.co/300x300/cccccc/333333?text=Rosso+Valle+Logo'">
+                
+                <div class="col-md-6 col-lg-4 portfolio-item identidades-visuais">
+                    <img src="./img/visual3.jpg" class="img-fluid rounded-corners" alt="Identidade Visual Rosso de Valle">
                     <div class="overlay">
-                        <h5>Logo "Rosso de Valle"</h5>
-                        <p>Design de logo para marca de vinhos.</p>
-                        <a href="#portfolioModalRossoValle" class="btn btn-outline-light btn-sm" data-bs-toggle="modal" data-bs-target="#portfolioModalRossoValle">Ver Projeto</a>
+                        <h5>Identidade Visual "Rosso de Valle"</h5>
+                        <p>Criação de logo, aplicações e identidade visual para marca de vinhos.</p>
+                        <a href="#portfolioModalRossoValleCompleta" class="btn btn-outline-light btn-sm" data-bs-toggle="modal" data-bs-target="#portfolioModalRossoValleCompleta">Ver Projeto</a>
                     </div>
                 </div>
-                <div class="col-md-6 col-lg-4 portfolio-item logos">
+
+                <div class="col-md-6 col-lg-4 portfolio-item identidades-visuais">
                     <img src="./img/projetos/etiqueta_roupa.png" class="img-fluid rounded-corners" alt="Etiqueta Roupa" onerror="this.onerror=null;this.src='https://placehold.co/300x300/cccccc/333333?text=Etiqueta+Roupas'">
                     <div class="overlay">
                         <h5>Etiqueta "Conforto & Estilo"</h5>
@@ -568,7 +594,7 @@
                         <a href="#portfolioModalEtiquetaRoupa" class="btn btn-outline-light btn-sm" data-bs-toggle="modal" data-bs-target="#portfolioModalEtiquetaRoupa">Ver Projeto</a>
                     </div>
                 </div>
-                <div class="col-md-6 col-lg-4 portfolio-item logos">
+                <div class="col-md-6 col-lg-4 portfolio-item identidades-visuais">
                     <img src="./img/projetos/etiqueta_roupa3.jpg" class="img-fluid rounded-corners" alt="Branding Etiqueta Roupa 3" onerror="this.onerror=null;this.src='https://placehold.co/300x300/cccccc/333333?text=Tipografia+LM'">
                     <div class="overlay">
                         <h5>Tipografia e Aplicação "LM"</h5>
@@ -594,7 +620,7 @@
                 </div>
 
                 <div class="col-md-6 col-lg-4 portfolio-item carrossel-midias-sociais">
-                    <img src="./img/midia1.jpg" class="img-fluid rounded-corners" alt="Carrossel Mídias Sociais Flávia Cakes">
+                    <img src="./img/midia2.jpg" class="img-fluid rounded-corners" alt="Carrossel Mídias Sociais Flávia Cakes">
                     <div class="overlay">
                         <h5>Carrossel "Flávia Cakes"</h5>
                         <p>Design de posts e carrosséis para redes sociais.</p>
@@ -602,12 +628,30 @@
                     </div>
                 </div>
 
-                <div class="col-md-6 col-lg-4 portfolio-item logos">
-                    <img src="./img/midia3.jpg" class="img-fluid rounded-corners" alt="Logo e Identidade Mundo do Fono">
+                <div class="col-md-6 col-lg-4 portfolio-item identidades-visuais">
+                    <img src="./img/midia3.jpg" class="img-fluid rounded-corners" alt="Identidade Visual Mundo do Fono">
                     <div class="overlay">
-                        <h5>Logo "Mundo do Fono"</h5>
+                        <h5>Identidade Visual "Mundo do Fono"</h5>
                         <p>Criação de identidade visual para fonoaudiologia.</p>
                         <a href="#portfolioModalMundoDoFono" class="btn btn-outline-light btn-sm" data-bs-toggle="modal" data-bs-target="#portfolioModalMundoDoFono">Ver Projeto</a>
+                    </div>
+                </div>
+
+                <div class="col-md-6 col-lg-4 portfolio-item identidades-visuais">
+                    <img src="./img/visual2.jpg" class="img-fluid rounded-corners" alt="Identidade Visual Ponto de Cultura Povoado Palmares">
+                    <div class="overlay">
+                        <h5>Identidade Visual "Ponto de Cultura Povoado Palmares"</h5>
+                        <p>Desenvolvimento de logo e elementos visuais para projeto cultural.</p>
+                        <a href="#portfolioModalPontoCulturaPalmares" class="btn btn-outline-light btn-sm" data-bs-toggle="modal" data-bs-target="#portfolioModalPontoCulturaPalmares">Ver Projeto</a>
+                    </div>
+                </div>
+
+                <div class="col-md-6 col-lg-4 portfolio-item identidades-visuais">
+                    <img src="./img/visual1.jpg" class="img-fluid rounded-corners" alt="Identidade Visual Ponto de Cultura Tecelagem da Malhadinha">
+                    <div class="overlay">
+                        <h5>Identidade Visual "Ponto de Cultura Tecelagem da Malhadinha"</h5>
+                        <p>Criação de logo e elementos visuais para centro de artesanato.</p>
+                        <a href="#portfolioModalPontoCulturaMalhadinha" class="btn btn-outline-light btn-sm" data-bs-toggle="modal" data-bs-target="#portfolioModalPontoCulturaMalhadinha">Ver Projeto</a>
                     </div>
                 </div>
 
@@ -661,19 +705,26 @@
         </div>
     </div>
 
-    <div class="modal fade" id="portfolioModalRossoValle" tabindex="-1" aria-labelledby="portfolioModalRossoValleLabel" aria-hidden="true">
+    <div class="modal fade" id="portfolioModalRossoValleCompleta" tabindex="-1" aria-labelledby="portfolioModalRossoValleCompletaLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered modal-lg">
             <div class="modal-content rounded-corners">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="portfolioModalRossoValleLabel">Identidade Visual "Rosso de Valle"</h5>
+                    <h5 class="modal-title" id="portfolioModalRossoValleCompletaLabel">Identidade Visual "Rosso de Valle"</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <img src="./img/marcaidentidadevisual/taca.png" class="img-fluid rounded-corners mb-3" alt="Logo Rosso de Valle - Taça" onerror="this.onerror=null;this.src='https://placehold.co/800x600/cccccc/333333?text=Rosso+Valle+Logo+2'">
+                    <div class="row mb-3">
+                        <div class="col-md-6">
+                            <img src="./img/marcaidentidadevisual/taca.png" class="img-fluid rounded-corners mb-3" alt="Logo Rosso de Valle - Taça" onerror="this.onerror=null;this.src='https://placehold.co/400x300/cccccc/333333?text=Rosso+Valle+Logo+Antigo'">
+                        </div>
+                        <div class="col-md-6">
+                            <img src="./img/visual3.jpg" class="img-fluid rounded-corners mb-3" alt="Aplicações Identidade Visual Rosso de Valle" onerror="this.onerror=null;this.src='https://placehold.co/400x300/cccccc/333333?text=Rosso+Valle+Aplicações'">
+                        </div>
+                    </div>
                     <img src="./img/marcaidentidadevisual/embalagens.png" class="img-fluid rounded-corners mb-3" alt="Embalagens Rosso de Valle" onerror="this.onerror=null;this.src='https://placehold.co/800x600/cccccc/333333?text=Embalagens+Rosso'">
-                    <p><strong>Contexto:</strong> Desenvolvimento completo da identidade visual para a marca de vinhos "Rosso de Valle", buscando transmitir elegância e tradição.</p>
-                    <p><strong>Abordagem:</strong> A logo, centrada na silhueta de uma taça, foi desenhada para ser sofisticada e memorável. As embalagens foram criadas para complementar a identidade, utilizando um design limpo e materiais que realçam a qualidade do produto.</p>
-                    <p><strong>Detalhes Técnicos:</strong> Design de logo e rótulos em Adobe Illustrator e Photoshop, mockups de apresentação.</p>
+                    <p><strong>Contexto:</strong> Desenvolvimento completo da identidade visual para a marca de vinhos "Rosso de Valle", buscando transmitir elegância, tradição e modernidade através de seu logo e diversas aplicações.</p>
+                    <p><strong>Abordagem:</strong> O projeto incluiu a criação de um logo principal (silhueta da taça), variações e desdobramentos da marca, como padrões para embalagens e materiais promocionais. A paleta de cores foi escolhida para evocar sofisticação e a tipografia combina elementos clássicos com toques contemporâneos.</p>
+                    <p><strong>Detalhes Técnicos:</strong> Design de logo, paleta de cores, tipografia (Futura Bk BT, Cinzel Decorative, Vivaldi Italic), rótulos e embalagens. Softwares: Adobe Illustrator e Photoshop, com criação de mockups para apresentação.</p>
                 </div>
             </div>
         </div>
@@ -832,14 +883,48 @@
         <div class="modal-dialog modal-dialog-centered modal-lg">
             <div class="modal-content rounded-corners">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="portfolioModalMundoDoFonoLabel">Logo e Identidade "Mundo do Fono"</h5>
+                    <h5 class="modal-title" id="portfolioModalMundoDoFonoLabel">Identidade Visual "Mundo do Fono"</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <img src="./img/midia3.jpg" class="img-fluid rounded-corners mb-3" alt="Detalhe Logo Mundo do Fono">
+                    <img src="./img/midia3.jpg" class="img-fluid rounded-corners mb-3" alt="Detalhe Identidade Visual Mundo do Fono">
                     <p><strong>Contexto:</strong> Desenvolvimento da identidade visual para "Mundo do Fono", uma iniciativa voltada para a área de fonoaudiologia, buscando transmitir profissionalismo e acessibilidade.</p>
                     <p><strong>Abordagem:</strong> O logo foi concebido para ser clean e moderno, combinando elementos visuais que remetem à comunicação global (o globo) e à especialidade da fonoaudiologia (o ícone abstrato de fala/som). A tipografia escolhida, Poppins, complementa a estética contemporânea e legível.</p>
                     <p><strong>Detalhes Técnicos:</strong> Criação de logo vetorizado, definição de paleta de cores, tipografia (Poppins Semi Bold e Regular) e aplicação em mockups de materiais de marca (cartão de visita, perfil de rede social) utilizando Adobe Illustrator.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="portfolioModalPontoCulturaPalmares" tabindex="-1" aria-labelledby="portfolioModalPontoCulturaPalmaresLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+            <div class="modal-content rounded-corners">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="portfolioModalPontoCulturaPalmaresLabel">Identidade Visual "Ponto de Cultura Povoado Palmares"</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <img src="./img/visual2.jpg" class="img-fluid rounded-corners mb-3" alt="Logo Ponto de Cultura Povoado Palmares">
+                    <p><strong>Contexto:</strong> Criação da identidade visual para o "Ponto de Cultura Povoado Palmares", um projeto cultural com foco na preservação do patrimônio local, incluindo uma igreja histórica e atividades artesanais.</p>
+                    <p><strong>Abordagem:</strong> O logo combina a silhueta da igreja com elementos que remetem à natureza e ao artesanato local. A paleta de cores terrosas e a tipografia rústica (Kerosby) buscam transmitir autenticidade e conexão com a comunidade.</p>
+                    <p><strong>Detalhes Técnicos:</strong> Design de logo, definição de paleta de cores e tipografia em Adobe Illustrator. Aplicações em materiais de divulgação.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="portfolioModalPontoCulturaMalhadinha" tabindex="-1" aria-labelledby="portfolioModalPontoCulturaMalhadinhaLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+            <div class="modal-content rounded-corners">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="portfolioModalPontoCulturaMalhadinhaLabel">Identidade Visual "Ponto de Cultura Tecelagem da Malhadinha"</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <img src="./img/visual1.jpg" class="img-fluid rounded-corners mb-3" alt="Logo Ponto de Cultura Tecelagem da Malhadinha">
+                    <p><strong>Contexto:</strong> Desenvolvimento da identidade visual para o "Ponto de Cultura Tecelagem da Malhadinha", um centro dedicado ao artesanato têxtil local, com destaque para a tecelagem em tear.</p>
+                    <p><strong>Abordagem:</strong> O logo apresenta elementos que representam a tecelagem, como o tear, o fio e a rede, em uma composição que transmite a habilidade manual e a tradição. A paleta de cores quentes e terrosas, juntamente com a tipografia artesanal (Kerosby), reforçam a identidade cultural.</p>
+                    <p><strong>Detalhes Técnicos:</strong> Design de logo, definição de paleta de cores e tipografia em Adobe Illustrator. Aplicações em materiais de sinalização e divulgação.</p>
                 </div>
             </div>
         </div>
@@ -937,30 +1022,37 @@
             });
         });
 
-        // Lógica de filtro do portfólio
+        // Lógica de filtro do portfólio (Atualizada para usar Dropdown)
         document.addEventListener('DOMContentLoaded', function() {
-            const filterButtons = document.querySelectorAll('.portfolio-filters .btn');
+            const filterDropdownItems = document.querySelectorAll('.portfolio-filters .dropdown-item');
             const portfolioItems = document.querySelectorAll('.portfolio-grid .portfolio-item');
+            const filterDropdownToggle = document.getElementById('portfolioFilterDropdown'); // Para atualizar o texto do botão
 
-            filterButtons.forEach(button => {
-                button.addEventListener('click', function() {
-                    // Remove 'active' de todos os botões
-                    filterButtons.forEach(btn => btn.classList.remove('active'));
-                    // Adiciona 'active' ao botão clicado
+            filterDropdownItems.forEach(item => {
+                item.addEventListener('click', function(e) {
+                    e.preventDefault(); // Previne o comportamento padrão do link
+
+                    // Remove 'active' de todos os itens do dropdown
+                    filterDropdownItems.forEach(dItem => dItem.classList.remove('active'));
+                    // Adiciona 'active' ao item clicado
                     this.classList.add('active');
+
+                    // Atualiza o texto do botão dropdown
+                    filterDropdownToggle.innerText = this.innerText;
 
                     const filterValue = this.getAttribute('data-filter');
 
-                    portfolioItems.forEach(item => {
-                        if (filterValue === 'all' || item.classList.contains(filterValue)) {
-                            item.style.display = 'block'; // Mostra o item
+                    portfolioItems.forEach(portfolioItem => {
+                        if (filterValue === 'all' || portfolioItem.classList.contains(filterValue)) {
+                            portfolioItem.style.display = 'block'; // Mostra o item
                         } else {
-                            item.style.display = 'none'; // Esconde o item
+                            portfolioItem.style.display = 'none'; // Esconde o item
                         }
                     });
                 });
             });
         });
+
 
         // Adiciona classe 'active' ao link da navbar quando a seção correspondente está visível
         const sections = document.querySelectorAll('section');
